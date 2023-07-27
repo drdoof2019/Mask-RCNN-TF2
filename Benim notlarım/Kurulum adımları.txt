@@ -1,0 +1,19 @@
+conda create -n MrcnnEnv python=3.7.11
+conda activate MrcnnEnv
+git clone https://github.com/ahmedfgad/Mask-RCNN-TF2 (maskrcnn in tensorflow2.0 ile çalışan sürümü kendi githubumda forklu)
+cd to Mask-RCNN-TF2-Master
+pip install -r requirements.txt
+pip install .
+Sonra kangoro klasörüne girip kanguru resmini tanımak için eğitelim. cd kangoru_training ile klasöre giriyoruz ve python kangru_training.py çalıştırıyoruz.
+Protobuf ile ilgili bir hata verirse pip install protobuf==3.20.* ile çözebilirsin.
+Hazır eğitilmiş bir modeli kendi verimizle eğitmek için COCO ağırlığını indirmemiz gerekiyor. link: https://github.com/matterport/Mask_RCNN/releases/
+Ben "mask_rcnn_balloon.h5" indirdim. Kodda ilgili yere adını yazdım.
+(çalıştırmaya çalışınca windows platformunda pythonun site packages içinde mrcnn librarysini bulup model.py dosyasının içinde self.log_dir = "//logdir//train"
+bu zıkkımdan dolayı hata veriyor. / sayısını 1 e düşür: self.log_dir = "/logdir/train" düzelir. Linuxte ise [Errno 13] Permission denied hatası veriyor 
+self.log_dir = "logdir/train" baştaki / ı silince düzeliyor
+
+Sanırım tensorflow python 3.8 den itibaren wsl üzerinden gpu desteği veriyor dolayısıyla ekran kartını aktif edemedim. python 3.7.11 dışında bir versiyonu ile de
+kütüphane çalışmıyor.
+
+
+İlgili video: https://www.youtube.com/watch?v=MF2AYo0SO6s
